@@ -18,8 +18,9 @@ android {
     }
 
     applicationVariants.all {
-        variant -> variant.output.all {
-            outputFileName = "UmaPatcherEdge-v${variant.versionName}-${variant.buildType.Name}.apk"
+        variant -> variant.output.each {
+            output -> def name = "UmaPatcherEdge-v${variant.versionName}-${variant.buildType.Name}.apk"
+            output.outputFileName = name
           }
       }
 
