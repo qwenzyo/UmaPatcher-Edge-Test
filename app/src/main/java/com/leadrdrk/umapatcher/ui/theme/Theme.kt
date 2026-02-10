@@ -102,7 +102,12 @@ fun UmaPatcherTheme(
 
         SideEffect {
             currentWindow.statusBarColor = colorScheme.surface.toArgb()
-            WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars = !darkTheme
+            currentWindow.navigationBarColor = colorScheme.surface.toArgb()
+            WindowCompat.getInsetsController(currentWindow, view).apply
+              {
+                isAppearanceLightStatusBars = !darkTheme
+                isAppearanceLightNavigationBars = !darkTheme
+              }
         }
     }
 
