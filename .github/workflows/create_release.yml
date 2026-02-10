@@ -50,7 +50,7 @@ jobs:
             git tag $LATEST_TAG
           fi
 
-          PREVIOUS_TAG=$(git describe --tags --abbrev=0 "${LATEST_TAG}^")
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 --always "${LATEST_TAG}^")
           if [ -z "$PREVIOUS_TAG" ]; then
             PREVIOUS_TAG=$(git rev-list --max-parents=0 HEAD)
           fi
@@ -81,11 +81,11 @@ jobs:
 
           unset IFS
       env:
-        LATEST_TAG: "v${{ env.VERSION_NAME }}"
+        LATEST_TAG: "v${{ env.VERSION_NAME }}-b${{ github.run_number }}"
 
     - name: Upload binaries to a release
       uses: softprops/action-gh-release@v2
       with:
         body_path: CHANGELOG.md
         files: app/build/outputs/apk/release/*.apk
-        tag_name: "v${{ env.VERSION_NAME }}"
+        tag_name: "v${{ env.VERSION_NAME }}-b${{ github.run_number }}"
