@@ -17,13 +17,6 @@ android {
         versionName "1.2.0"
     }
 
-    applicationVariants.all {
-        variant -> variant.output.each {
-            output -> def name = "UmaPatcherEdge-v${variant.versionName}-${variant.buildType.Name}.apk"
-            output.outputFileName = name
-          }
-      }
-
     signingConfigs {
         debug {
             storeFile file("debug.keystore")
