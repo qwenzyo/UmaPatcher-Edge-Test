@@ -265,6 +265,6 @@ fun RadioGroupOption(
             }
             Spacer(Modifier.height(8.dp))
         }
-        Divider()
+//        Divider()
     }
 }
