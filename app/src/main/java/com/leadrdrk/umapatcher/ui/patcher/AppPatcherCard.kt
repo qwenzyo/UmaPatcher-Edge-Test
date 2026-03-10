@@ -50,7 +50,7 @@ fun AppPatcherCard(navigator: DestinationsNavigator) {
 
     // Options
     // 0=Save, 1=Normal, 2=Direct, 3=Shizuku
-    val installMethod = rememberSaveable { mutableIntStateOf(1) }
+    val installMethod = rememberSaveable { mutableIntStateOf(2) }
     var fileUris by rememberSaveable { mutableStateOf<Array<Uri>>(arrayOf()) }
     val fileSelectLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         val data = it.data ?: return@rememberLauncherForActivityResult
